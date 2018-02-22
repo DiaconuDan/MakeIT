@@ -9,15 +9,11 @@ var User = require('../api/models/user');
 
 mongoose.connect('mongodb://localhost:27017');
 
-// configure app to use bodyParser()
-// this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-var port = process.env.PORT || 8082;        // set our port
-
-// ROUTES FOR OUR API
+var port = process.env.PORT || 8082;       
 
 var router = express.Router();
 
@@ -31,6 +27,31 @@ router.get('/', function (req, res) {
 });
 
 // more routes for our API will happen here
+
+router.post('/users', function (req, res) {
+        console.log(req.body);
+        if (undefined) {
+            res.status(403);
+            res.json({ message: 'Please provide a name' });
+            
+        } else {
+            var user = new User();
+        // create a new instance of the User model
+        user.name = req.body.name;  // set the users name (comes from the request)
+        user.age = 18;
+        // save the bear and check for errors
+        user.save(function (err) {
+            if (err)
+                res.send(err);
+
+            res.json({ message: 'User created!' });
+        });
+        }
+        
+
+    });
+
+
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
