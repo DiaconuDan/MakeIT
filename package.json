@@ -5,8 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start-frontend": "ng serve",
-    "start-backend" : "node api/server.js",
-    "start-db" : "mongod",
+    "start-backend": "node api/server.js",
+    "start-db": "mongod",
     "start": "concurrently \"mongod\" \"ng serve\" \"node api/server.js\"",
     "build": "ng build",
     "test": "ng test",
