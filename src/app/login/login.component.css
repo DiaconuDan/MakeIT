@@ -1,0 +1,11 @@
+.login-form{
+    display:block ;
+    margin: 0 auto;
+    min-width: 200px;
+    width:50%;
+    margin-top: 50px;
+}
+
+.login-form form{
+    margin-top:50px;
+}
