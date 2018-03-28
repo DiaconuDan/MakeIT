@@ -2,7 +2,11 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var User = require('../api/models/user');
+var User = require('../api/models/users');
+var passport = require('passport');
+var myPassport = require('../api/config/passport');
+
+var path = require('path');
 
 
 // connect to db
@@ -51,10 +55,16 @@ router.post('/users', function (req, res) {
 
     });
 
-
+    app.use(function (err, req, res, next) {
+        if (err.name === 'UnauthorizedError') {
+          res.status(401);
+          res.json({"message" : err.name + ": " + err.message});
+        }
+      });
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
+// app.use(passport.initialize());
 app.use('/api', router);
 
 // START THE SERVER
