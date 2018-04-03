@@ -5,12 +5,17 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes} from '@angular/router' ;
 import { LoginComponent} from './login/login.component' ;
 import { AppComponent } from './app.component';
-import { SignupComponent } from './signup/signup.component';
+import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './common/navbar/navbar.component';
+import { AuthenticationService } from './authentication.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ProfileComponent } from './profile/profile.component';
+import { Profile } from 'selenium-webdriver/firefox';
 
 const appRoutes : Routes = [
     {path: 'login', component: LoginComponent} ,
-    {path: 'signup', component: SignupComponent}, 
+    {path: 'register', component: RegisterComponent}, 
+    {path: 'profile', component: ProfileComponent},
     {path: '**' , redirectTo: '/'}
 ];
 
@@ -19,16 +24,18 @@ const appRoutes : Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent,
-    NavbarComponent
+    RegisterComponent,
+    NavbarComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     RouterModule.forRoot ( appRoutes, { enableTracing:false})
   ],
-  providers: [],
+  providers: [ AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
