@@ -4,6 +4,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 // import { HttpClient } from 'selenium-webdriver/http';
 import { Observable } from 'rxjs/Observable';
 
+interface ILoginResponse {
+    message : String 
+}
 
 @Component({
     selector: 'login',
@@ -20,15 +23,16 @@ export class LoginComponent {
     private password: string;
     login() {
         
-        this.http.post("http://localhost:8082/api/login", {email: this.email}, {
+        this.http.post("http://localhost:8082/api/login", {email: this.email, password: this.password}, {
             headers: new HttpHeaders({
                 "Content-Type": 'application/json'
             })
-        }).subscribe((data) => {
-            console.log(data);
+        }).subscribe((data : ILoginResponse) => {
+            console.log(data.message) ;
         });
-
     }
+
+
 
 
 }
