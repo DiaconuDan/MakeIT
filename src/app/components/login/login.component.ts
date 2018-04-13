@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 interface ILoginResponse {
-    message : String 
+    message: String
 }
 
 @Component({
@@ -19,20 +19,14 @@ export class LoginComponent {
     constructor(private http: HttpClient, private router: Router) {
 
     }
-    private email: string;
+    private username: string;
     private password: string;
     login() {
-        
-        this.http.post("http://localhost:8082/api/login", {email: this.email, password: this.password}, {
+        console.log(this.username + "  " + this.password);
+        this.http.post("http://localhost:8082/users/authenticate", { username: this.username, password: this.password }, {
             headers: new HttpHeaders({
                 "Content-Type": 'application/json'
             })
-        }).subscribe((data : ILoginResponse) => {
-            console.log(data.message) ;
-        });
+        }).subscribe((data) => { (console.log(data)); })
     }
-
-
-
-
 }
