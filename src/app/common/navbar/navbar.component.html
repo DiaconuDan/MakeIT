@@ -4,12 +4,19 @@
                 <a class="navbar-brand" routerLink="/">MakeIT</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-                <li  *ngFor="let item of menuItems">
-                    <a routerLink='{{item.href}}'  [ngClass]="item.className"> {{item.label}}</a>
+                <li *ngIf="authService.loggedIn()==false" [routerLinkActive]="['active']">
+                    <a routerLink='/login' ngClass="glyphicon glyphicon-log-in"> Login</a>
+                </li>
+                <li *ngIf="authService.loggedIn()==false" [routerLinkActive]="['active']">
+                    <a routerLink='/register' ngClass="glyphicon glyphicon-user"> Register</a>
+                </li>
+               
+                <li *ngIf="authService.loggedIn()==true">
+                    <a routerLink='/profile' ngClass="glyphicon  glyphicon glyphicon-user"> Profile</a>
+                </li>
+                <li *ngIf="authService.loggedIn()==true">
+                    <a routerLink='/logout' ngClass="glyphicon glyphicon-log-out" (click) = "onLogoutClick()" href='#'> Logout</a>
                 </li>
          </ul>   
     </div>
 </nav>
-
-
-
