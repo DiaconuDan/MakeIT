@@ -12,8 +12,13 @@
                 </li>
                
                 <li *ngIf="authService.loggedIn()==true">
+                    <a routerLink='/quiz' ngClass="glyphicon glyphicon-book"> Train</a>
+                </li>
+
+                <li *ngIf="authService.loggedIn()==true">
                     <a routerLink='/profile' ngClass="glyphicon  glyphicon glyphicon-user"> Profile</a>
                 </li>
+
                 <li *ngIf="authService.loggedIn()==true">
                     <a routerLink='/logout' ngClass="glyphicon glyphicon-log-out" (click) = "onLogoutClick()" href='#'> Logout</a>
                 </li>

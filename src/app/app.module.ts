@@ -14,13 +14,15 @@ import { Profile } from 'selenium-webdriver/firefox';
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
 // import { FlashMessagesModule } from 'angular2-flash-messages' ;
-import { AuthGuard} from './guards/auth.guard' ;
+import { AuthGuard} from './guards/auth.guard';
+import { QuizComponent } from './components/quiz/quiz.component' ;
 
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate:[AuthGuard] },
+  { path: 'quiz', component:QuizComponent, canActivate:[AuthGuard]},
   { path: '**', redirectTo: '/' }
 ];
 
@@ -31,7 +33,8 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     NavbarComponent,
-    ProfileComponent
+    ProfileComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,

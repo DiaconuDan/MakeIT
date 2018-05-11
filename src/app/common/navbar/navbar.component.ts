@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import menuItems from '../menuItems';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 
@@ -11,7 +10,6 @@ import { AuthService } from '../../services/auth.service';
 })
 
 export class NavbarComponent {
-    @Input() private menuItems;
     constructor(
         private http: HttpClient,
         private router: Router,

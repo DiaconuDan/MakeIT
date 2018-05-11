@@ -51,7 +51,7 @@ loadToken() {
 }
 
 loggedIn(){
-  console.log( tokenNotExpired('id_token')) ;
+//  console.log( tokenNotExpired('id_token')) ;
   return tokenNotExpired('id_token');
 }
 
