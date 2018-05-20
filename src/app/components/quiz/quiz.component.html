@@ -1,39 +1,28 @@
-<!DOCTYPE html>
-<html>
 
-<body>
-  <div class="grid">
-      <p id="demo"></p>
-    <div id="quiz">
-      <h1>Quiz</h1>
-      <hr style="margin-bottom: 20px">
+<div class="grid" >
+  <p id="demo"></p>
+  <div id="quiz">
+    <h1>Quiz</h1>
+    <hr style="margin-bottom: 20px">
 
-      <p id="question"></p>
+    <p id="question"> {{questionText}}</p>
 
-      <div class="buttons">
-        <button id="btn0">
-          <span id="choice0"></span>
-        </button>
-        <button id="btn1">
-          <span id="choice1"></span>
-        </button>
-        <button id="btn2">
-          <span id="choice2"></span>
-        </button>
-        <button id="btn3">
-          <span id="choice3"></span>
-        </button>
-      </div>
+    <div class="buttons">
+      <!-- <button *ngFor="let answer of Answers; let i = index" [attr.id]="btn{{i}}" click="verifiyAnswerGiven({{i}})">
+        <span id="choice{{i}}"> {{ answer }} </span>
+      </button> -->
 
-      <hr style="margin-top: 50px">
-      <footer>
-        <p id="progress">Questions x of y</p>
-      </footer>
+      
+      <button *ngFor="let answer of Answers; let i = index" id="btn{{i}}" (click)="verifyAnswerGiven(i)">
+       
+          <span id="choice{{i}}"> {{ answer }} </span>
+          <br> <br ><br>
+        </button>
     </div>
+
+    <hr style="margin-top: 50px">
+    <footer>
+      <p id="progress">Questions  {{count + 1 }}  of 4</p>
+    </footer>
   </div>
-
-
-    
-</body>
-
-</html>
+</div>

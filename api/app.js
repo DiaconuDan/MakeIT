@@ -11,7 +11,7 @@ var config = require('./config/database') ;
 var cors = require('cors') ;
 
 const users = require('./routes/users') ;
-
+const questions = require('./routes/questions') ;
 // Connect To Database
 
 mongoose.connect(config.database);
@@ -67,6 +67,7 @@ router.get('/', function (req, res) {
 // all of our routes will be prefixed with /api
 // app.use(passport.initialize());
 app.use('/users', users) ;
+app.use('/questions', questions) ;
 app.use('/api', router);
 // app.use('/api', login) ;
 // app.use('/api', register) ;

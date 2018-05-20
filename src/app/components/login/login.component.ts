@@ -30,6 +30,7 @@ export class LoginComponent {
             password: this.password
         }
        
+        
        
         this.authService.authenticateUser(user).subscribe(data => {
             console.log(data) ;
@@ -39,18 +40,10 @@ export class LoginComponent {
                 this.router.navigate(["/profile"]) ;
 
             }else {
-                // console.log(data.msg) ;
                 this.router.navigate(["/login"]) ;
             }
         });
         
-        /*
-        console.log(this.username + "  " + this.password);
-        this.http.post("http://localhost:8082/users/authenticate", { username: this.username, password: this.password }, {
-            headers: new HttpHeaders({
-                "Content-Type": 'application/json'
-            })
-        }).subscribe((data) => { (console.log(data)); })
-        */
+      
     }
 }

@@ -19,7 +19,7 @@ registerUser(user) {
 }
 
 authenticateUser(user) {
-  console.log(user) ;
+  //console.log(user) ;
   let headers = new Headers();
   headers.append('Content-Type', 'application/json') ;
   return this.http.post("http://localhost:8082/users/authenticate", user, { headers: headers})

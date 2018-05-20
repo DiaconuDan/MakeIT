@@ -11,12 +11,13 @@ import { AuthenticationService } from './authentication.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './components/profile/profile.component';
 import { Profile } from 'selenium-webdriver/firefox';
+
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
-// import { FlashMessagesModule } from 'angular2-flash-messages' ;
+import { QuestionsService} from './services/questions.service' ;
+
 import { AuthGuard} from './guards/auth.guard';
 import { QuizComponent } from './components/quiz/quiz.component' ;
-
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -44,7 +45,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes, { enableTracing: false }),
 
   ],
-  providers: [AuthenticationService, ValidateService,  AuthService, AuthGuard],
+  providers: [AuthenticationService, ValidateService,  AuthService, AuthGuard, QuestionsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
